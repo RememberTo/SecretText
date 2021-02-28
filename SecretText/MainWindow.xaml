@@ -1,0 +1,173 @@
+﻿<Window x:Class="SecretText.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SecretText"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Шифр Гронсфельда"  Height="720" Width="1280" WindowStartupLocation="CenterScreen">
+    <Grid Margin="0,0,0,0" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="38*"/>
+            <ColumnDefinition Width="170*"/>
+            <ColumnDefinition Width="343*"/>
+            <ColumnDefinition Width="65*"/>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="64*"/>
+            <ColumnDefinition Width="374*"/>
+            <ColumnDefinition Width="170*"/>
+            <ColumnDefinition Width="39*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="147*"/>
+            <RowDefinition Height="88*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="38*"/>
+            <RowDefinition Height="83*"/>
+            <RowDefinition Height="67*"/>
+            <RowDefinition Height="14*"/>
+            <RowDefinition Height="41*"/>
+            <RowDefinition Height="162*"/>
+        </Grid.RowDefinitions>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF071318"/>
+                <GradientStop Color="#FF121C2F" Offset="1"/>
+                <GradientStop Color="#FF1D3445" Offset="0.547"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <TextBox 
+            x:Name="EnterCode"
+            HorizontalAlignment="Left" 
+            Height="322" Margin="27.4,4.8,0,0" 
+            TextWrapping="Wrap"
+            VerticalAlignment="Top" Width="470"
+            materialDesign:HintAssist.Hint="Введите текст"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            FontSize="18" 
+            CaretBrush="#FF69C9E7"
+            Foreground="#FFCDFFFC" 
+            BorderBrush="#8955F6FF" 
+            Background="#00000000" SelectionBrush="#FF8BB1CE" Grid.RowSpan="6" Cursor="Pen" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="1"
+            />
+        <TextBox 
+            x:Name="TextBoxKey"
+            HorizontalAlignment="Left" 
+            Height="64" Margin="27.4,77,0,0" 
+            TextWrapping="Wrap"
+            VerticalAlignment="Top" Width="346"
+            materialDesign:HintAssist.Hint="Введите ключ"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            FontSize="18" 
+            CaretBrush="#FF69C9E7"
+            Foreground="#FFCDFFFC" 
+            BorderBrush="#8955F6FF" 
+            Background="#00000000" SelectionBrush="#FF8BB1CE" Cursor="Pen" Grid.ColumnSpan="2" Grid.Column="1"
+            />
+        <RadioButton 
+            x:Name="RadioButton_Decoding"
+            Content="Расшифровать" 
+            Foreground="#FFCDFFFC"
+            FontSize="16"
+            HorizontalAlignment="Left" 
+            Margin="343,117,0,0" 
+            VerticalAlignment="Top" 
+            Height="24" Width="129"
+            Style="{StaticResource MaterialDesignAccentRadioButton}" Background="#FFBF00EA" Cursor="Hand" Grid.ColumnSpan="4" Grid.Column="2"
+            />
+        <RadioButton 
+            x:Name="RadioButton_Encoding"
+            Content="Зашифровать" 
+            Foreground="#FFCDFFFC"
+            FontSize="16"
+            HorizontalAlignment="Left" 
+            Margin="343,93,0,0" 
+            VerticalAlignment="Top" 
+            Height="24" Width="139"
+            Style="{StaticResource MaterialDesignAccentRadioButton}"
+            Background="#FFBF00EA" 
+            BorderBrush="#FF09AAE5" Cursor="Hand" Grid.ColumnSpan="4" Grid.Column="2"
+           
+            />
+        <materialDesign:RatingBar 
+            HorizontalAlignment="Left"                
+            Margin="343,59,0,0" 
+            VerticalAlignment="Top"
+            Height="29"
+            Width="139" 
+            Foreground="#FFB7C514" Cursor="Hand" RenderTransformOrigin="0.5,0.5" Grid.Column="2" Grid.ColumnSpan="4"/>
+        <TextBox 
+            x:Name="ResultCode" 
+            Height="322" Margin="44.6,4.8,30.4,0" 
+            TextWrapping="Wrap"
+            VerticalAlignment="Top"
+            materialDesign:HintAssist.Hint=""
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            FontSize="18" 
+            CaretBrush="#FF69C9E7"
+            Foreground="#FFCDFFFC" 
+            BorderBrush="#8955F6FF" 
+            Background="#00000000" SelectionBrush="#FF8BB1CE" Grid.RowSpan="6" Cursor="Pen" Grid.Column="6" Grid.ColumnSpan="2" Grid.Row="1"
+            />
+        <Button Content="Добавить файл"
+            ToolTip="Добавляет текст из файла в текстовое поле"
+            Foreground="#FFCDFFFC"
+            Height="Auto"
+            Margin="0.4,0.394,0,0.406"  
+            Background="#FF1D1F40" 
+            Click="Button_Click" FontSize="16" Grid.Row="8" Grid.Column="1"/>
+        <Button Content="Сохранить как"
+            ToolTip="Сохроняет расшифрованный или зашифрованный текст в файл"
+            Foreground="#FFCDFFFC"
+            Margin="0,0.394,0.4,0.406" 
+            Height="Auto" 
+            Background="#FF1D1F40" Grid.Column="7" Click="Button_Click_1" Grid.Row="8" FontSize="16"/>
+        <Button Content="Выполнить"
+            Foreground="#FFCDFFFC"
+            Margin="343,1.8,0.4,9.6" 
+            RenderTransformOrigin="1.147,-1.95" 
+            Height="Auto" 
+            Background="#FF1D1F40" 
+            FontSize="16" Click="Button_Click_2" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="4" Grid.RowSpan="2" 
+            />
+        <Label
+            x:Name="Label_code"
+            Content="Зашифрованная информация"
+            FontSize="12"
+            Foreground="#FF83B4B1" Margin="40.6,9.8,70.8,26.2" Grid.Column="6" Grid.Row="1"
+            />
+        <Label
+            x:Name="Label_Uncode"
+            Content="Расшифрованная информация"
+            FontSize="12"
+            Foreground="#FF83B4B1" 
+            Margin="40.6,9.8,105.8,41.2" 
+            Grid.Column="6" Grid.Row="1"
+            />
+        <Button Content="🡄"
+                ToolTip="Перемещает текст из правого окна в левое"
+            Foreground="#FFCDFFFC"
+            Margin="343,9.8,0,82.806" 
+            RenderTransformOrigin="1.147,-1.95" 
+            Height="Auto"
+            Background="#FF1D1F40" 
+            FontSize="20" 
+            Click="Button_Click_4" 
+            Grid.Column="2" 
+            Grid.Row="3" 
+            Grid.RowSpan="3" 
+            Grid.ColumnSpan="2" 
+            />
+        <Button Content="🡆"
+            ToolTip="Перемещает текст из левого окна в правое"
+            Foreground="#FFCDFFFC"
+            Margin="10,9.8,0.4,82.806" 
+            RenderTransformOrigin="1.147,-1.95" 
+            Height="Auto" 
+            Background="#FF1D1F40" 
+            FontSize="20" Grid.Column="4" Click="Button_Click_3" Grid.Row="3" Grid.RowSpan="3" Grid.ColumnSpan="2" 
+            />
+    </Grid>
+</Window>
